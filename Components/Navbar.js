@@ -23,8 +23,9 @@ function Navbar({
   setIsEraserSelected,
   handleRedo,
   handleUndo,
-  addRectangle,
+  setRectangle,
   setTool,
+  setCircle,
 }) {
   const ColorList = [
     "#D9E3F0",
@@ -40,8 +41,8 @@ function Navbar({
   };
 
   return (
-    <div className="navbar flex items-center h-20 p-4">
-      <div className="navbar-left flex space-x-4">
+    <div className=" flex items-center h-20 p-4">
+      <div className=" flex space-x-4">
         <Pencil1Icon
           className={`w-6 h-6 ${isPencilSelected ? "text-blue-500" : ""}`}
           onClick={() => {
@@ -60,8 +61,8 @@ function Navbar({
         />
         <ArrowTopLeftIcon className="w-6 h-6" onClick={handleUndo} />
         <ArrowTopRightIcon className="w-6 h-6" onClick={handleRedo} />
-        <SquareIcon className="w-6 h-6" onClick={addRectangle} />
-        <CircleIcon className="w-6 h-6" />
+        <SquareIcon className="w-6 h-6" onClick={setRectangle} />
+        <CircleIcon className="w-6 h-6" onClick={setCircle} />
         <div className="flex">
           <CirclePicker
             className="flex flex-col w-6 h-6"

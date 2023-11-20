@@ -13,24 +13,12 @@ import {
 export const tools = [
   {
     id: 0,
-    title: "Photos",
-    icon: <ImageIcon />,
-    component: "imagesSection",
-  },
-  {
-    id: 1,
-    title: "Backgrounds",
-    icon: <PaddingIcon />,
-    component: "backgroundsSection",
-  },
-  {
-    id: 2,
     title: "Uploads",
     icon: <UpdateIcon />,
     component: "uploadSection",
   },
   {
-    id: 3,
+    id: 1,
     title: "Share",
     icon: <Share2Icon />,
     component: "shareSection",
