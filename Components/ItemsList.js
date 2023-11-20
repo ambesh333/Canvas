@@ -2,19 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./Styles/itemsList.css";
 import { tools } from "../Data/tools";
 
-import ImagesSection from "./ItemsListComponents/ImagesSection";
-import BackgroundsSection from "./ItemsListComponents/BackgroundsSection";
 import UploadSection from "./ItemsListComponents/UploadSection";
 import ShareSection from "./ItemsListComponents/ShareSection";
 import ToolsBar from "./ToolsBar";
-import { CircleIcon } from "@radix-ui/react-icons";
 
 function ItemsList(props) {
   const [selectedTools, setSelectedTools] = useState(0);
   // componentsMap keys must be same with components key value in /Data/tools.js
   const componentsMap = {
-    imagesSection: ImagesSection,
-    backgroundsSection: BackgroundsSection,
     uploadSection: UploadSection,
     shareSection: ShareSection,
   };
@@ -38,15 +33,14 @@ function ItemsList(props) {
   }, [sidebarCollapse]);
 
   return (
-    <div
-      className={`itemsListWrap ${
-        sidebarCollapse ? "sidebarOpen" : "sidebarClosed"
-      }`}
-    >
+    <div className="w-full h-full">
       {/* <div className="expandButton" onClick={() => openMenuOnClick()}>
         <CircleIcon />
       </div> */}
-      <div className="itemsListBody">
+      <div
+        className="flex-col h-full w-full"
+        style={{ background: "var(--dark)" }}
+      >
         <ToolsBar changeSelectedTool={changeSelectedTool} />
 
         {tools.map((val) => {

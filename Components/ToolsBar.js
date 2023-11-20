@@ -10,15 +10,15 @@ function ToolsBar(props) {
         <div className="flex w-full flex-row">
           {tools.map((tool, i) => (
             <div
-              className="toolsItem"
+              className="flex-row w-24 items-center justify-center m-2 cursor-pointer"
               key={i}
               onClick={() => {
                 props.changeSelectedTool(i);
               }}
             >
-              <div className="toolsItemContent">
-                <span className="toolIcon">{tool.icon}</span>
-                <span className="toolTitle">{tool.title}</span>
+              <div className="toolsItemContent" style={{}}>
+                <span className="w-24px h-24px">{tool.icon}</span>
+                <span className="text-5">{tool.title}</span>
               </div>
             </div>
           ))}

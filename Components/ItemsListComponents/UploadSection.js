@@ -78,7 +78,7 @@ function UploadSection(props) {
   };
 
   return (
-    <div className="itemsSection">
+    <div className="w-full">
       <UploadButton />
       {checkUploadedImagesNotEmpty() ? (
         <UploadedImages />

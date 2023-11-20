@@ -1,47 +1,4 @@
-/* general css */
-/* .itemsListWrap {
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-  display: flex;
-  transition: all .4s ease-in-out;
-  overflow: hidden;
-  flex-direction: row;
-} */
-.itemsListBody {
-  background: var(--dark);
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-/* end of general css */
 
-/* toolsBar css */
-.toolsBarWrap {
-  display: flex;
-  flex-direction: row;
-  height: 72px;
-  position: relative;
-}
-.toolsBarBody {
-  min-width: 72px;
-  display: flex;
-  flex-direction: row;
-  flex-grow: 0;
-  position: relative;
-  height: 100%;
-}
-.toolsItemsWrap {
-  display: flex;
-  flex-direction: row;
-}
-.toolsItem {
-  height: 72px;
-  width: 72px;
-  position: relative;
-}
 .toolsItemContent {
   font-size: 1.1rem;
   display: flex;
@@ -53,22 +10,8 @@
   cursor: pointer;
   margin-top: 20px;
 }
-.toolIcon {
-  width: 24px;
-  height: 24px;
-}
-.toolTitle {
-  display: block;
-  padding: 0 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 100%;
-  height: 18px;
-  line-height: 18px;
-  text-overflow: ellipsis;
-  text-align: center;
-  font-size: 11px;
-}
+
+
 /* end of toolBar css */
 
 /* itemsSection css */
@@ -132,27 +75,7 @@
   font-size: 17px;
 }
 /* end of select  */
-/* backgrounds text  */
-.clearBackgroundWrap {
-  position: relative;
-  display: block;
-  margin: 50px auto 50px;
-  width: 90%;
-  text-align: center;
-}
-.clearBackgroundText {
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-  transition: color .15s ease-in-out;
-}
-.clearBackgroundText:hover {
-  color:#999
-}
-.clearBackgroundText::before {
-  content: '\261B';
-}
-/* end of backgrounds text */
+
 /* upload image */
 .uploadImageWrap {
   position: relative;
@@ -236,67 +159,3 @@
   background-color: #c04c50;
 }
 /* end of sharing section */
-/* expand button */
-.expandButton {
-  width: auto;
-  height: 100px;
-  margin: auto 0;
-  background-color: #252627;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  border-radius: 0 50px 50px 0;
-  cursor: pointer;
-}
-.sidebarOpen .expandButton svg {
-  transform: rotate(270deg);
-}
-.sidebarClosed .expandButton svg {
-  transform: rotate(90deg);
-}
-.expandButton svg {
-  transition: all .5s ease-in-out;
-}
-/* end of expand button */
-
-/* end of itemsSection css */
-
-/* responsive */
-.sidebarOpen {
-  width: 100%;
-  height: 100%;
-}
-.sidebarClosed {
-  width: 24px;
-  max-width: 432px;
-}
-@media screen and (max-width: 1024px) {
-    .itemsListWrap {
-      height: 90%;
-      position: absolute;
-      flex-direction: column;
-    }
-    .sidebarOpen {
-      width: 100%;
-      max-width: none;
-    }
-    .sidebarClosed {
-      height: 15%;
-      width: 100%;
-      max-width: none;
-    }
-    .sidebarOpen .expandButton svg {
-      transform: rotate(0);
-    }
-    .sidebarClosed .expandButton svg {
-      transform: rotate(180deg);
-    }
-    .expandButton {
-      border-radius: 50px 50px 0 0;
-      width: 100px;
-      height: auto;
-      margin: 0 auto;
-    }
-}
-/* end of responsive */

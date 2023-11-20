@@ -1,15 +1,5 @@
-import {
-  ImageIcon,
-  PaddingIcon,
-  UpdateIcon,
-  Share2Icon,
-} from "@radix-ui/react-icons";
+import { UpdateIcon, Share2Icon } from "@radix-ui/react-icons";
 
-// below is list of components that appear in sidebar
-// id - unique id
-// title - title of tool
-// icon - imported icon from material ui
-// component - component string needed for conditional rendering in itemsList.js
 export const tools = [
   {
     id: 0,

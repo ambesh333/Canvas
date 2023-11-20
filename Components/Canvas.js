@@ -2,11 +2,10 @@ import React, { useRef, useState, useEffect } from "react";
 import { Stage, Layer, Line } from "react-konva";
 import ItemsList from "./ItemsList";
 import ImageComponent from "./ImageComponent";
-// import CanvasBackground from "./CanvasBackground";
 import Navbar from "./Navbar";
 import RectangleComponent from "./shapes/Rectangle";
 import CircleComponent from "./shapes/Circle";
-import "./Styles/canvas.css";
+
 let history = [[]];
 let historyStep = 0;
 
