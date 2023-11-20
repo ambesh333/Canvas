@@ -1,0 +1,26 @@
+{
+  "name": "unstudio-assignment",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@radix-ui/react-icons": "^1.3.0",
+    "autoprefixer": "10.4.16",
+    "eslint": "8.54.0",
+    "eslint-config-next": "14.0.3",
+    "konva": "^9.2.3",
+    "next": "14.0.3",
+    "postcss": "8.4.31",
+    "react": "18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "18.2.0",
+    "react-konva": "^18.2.10",
+    "tailwindcss": "3.3.5",
+    "use-image": "^1.1.1"
+  }
+}
