@@ -8,12 +8,12 @@ import {
   EyeOpenIcon,
 } from "@radix-ui/react-icons";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/ui/button";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card";
+} from "@/Components/ui/hover-card";
 import {
   Card,
   CardContent,
@@ -21,7 +21,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/Components/ui/card";
 
 function LayerSection(props) {
   const { setGroups, setCurrentGroupId, groups } = props;
