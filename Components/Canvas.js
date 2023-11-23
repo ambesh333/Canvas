@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useState, useEffect } from "react";
 import ItemsList from "./ItemsList";
 import Navbar from "./Navbar";
@@ -135,6 +137,7 @@ function Canvas() {
 
   const [color, setColor] = useState("red");
   const rectRef = useRef();
+  const [lineWidth, setLineWidth] = useState(5);
 
   const [isPencilSelected, setIsPencilSelected] = useState(false);
   const [isEraserSelected, setIsEraserSelected] = useState(false);
@@ -236,10 +239,12 @@ function Canvas() {
               setRectangle={setRectangle}
               setCircle={setCircle}
               setTool={setTool}
+              setLineWidth={setLineWidth}
+              lineWidth={lineWidth}
             />
           </div>
           <div
-            className="flex-none h-10/12 canvas"
+            className="flex-none h-10/12 canvas bg-white"
             style={{
               position: "relative",
               width: "100%",
@@ -267,6 +272,7 @@ function Canvas() {
               lines={lines}
               color={color}
               passImageWithId={passImageWithId}
+              lineWidth={lineWidth}
             />
           </div>
         </div>

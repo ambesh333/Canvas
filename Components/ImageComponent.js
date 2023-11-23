@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef, useEffect, Fragment } from "react";
 import { Image, Transformer, Line, Circle } from "react-konva";
 import useImage from "use-image";

@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef, useEffect, Fragment, useState } from "react";
 import { Line, Transformer } from "react-konva";
 

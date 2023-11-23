@@ -1,5 +1,27 @@
+"use client";
+
 import React from "react";
-import { DownloadIcon } from "@radix-ui/react-icons";
+import {
+  ChevronDownIcon,
+  PlusIcon,
+  EyeNoneIcon,
+  EyeOpenIcon,
+} from "@radix-ui/react-icons";
+
+import { Button } from "@/components/ui/button";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 function LayerSection(props) {
   const { setGroups, setCurrentGroupId, groups } = props;
@@ -25,26 +47,69 @@ function LayerSection(props) {
   return (
     <div className="w-full">
       <div className="shareSectionWrap">
-        <div className="flex-row">
-          <div className=" flex button">
-            <button onClick={addNewGroup}>
-              <h1 className="bg-black"> Add Group </h1>
-            </button>
-          </div>
-          <div className=" flex bg-red-500">
-            <h2>Groups:</h2>
-            <ul>
+        <div className="hidden flex-col space-y-4 sm:flex md:order-2">
+          <div className="grid gap-2">
+            <HoverCard openDelay={200}>
+              <HoverCardTrigger asChild>
+                <span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  LAYERS
+                </span>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-[320px] text-sm" side="left">
+                Organize your design with layers. Add, delete, and rearrange
+                layers to control the order of your elements. Toggle layer
+                visibility to easily hide or show specific elements.
+              </HoverCardContent>
+            </HoverCard>
+
+            <div className="flex-col w-full">
               {groups.map((group) => (
-                <li key={group.id}>
-                  Group {group.id + 1}
-                  {/* Add any additional information you want to display */}
-                  <button onClick={() => toggleVisibility(group.id)}>
-                    {group.visible ? "Hide" : "Show"}
-                  </button>
-                  <button onClick={() => deleteGroup(group.id)}>Delete</button>
-                </li>
+                <div className=" pt-5">
+                  <div className="flex  ">
+                    <Card>
+                      <div className="w-full flex">
+                        <div className="flex-col button p-3 ">
+                          <Button onClick={addNewGroup}>
+                            <PlusIcon />
+                          </Button>
+                        </div>
+                        <div className="flex-col ">
+                          <CardHeader>
+                            <CardTitle> Layer {group.id + 1}</CardTitle>
+                          </CardHeader>
+                        </div>
+                      </div>
+
+                      <CardContent className="flex gap-6">
+                        <div className="flex items-center justify-between space-x-4">
+                          <Button
+                            variant="outline"
+                            className="bg-grey-500 "
+                            onClick={() => toggleVisibility(group.id)}
+                          >
+                            <div className=" p-1">
+                              {group.visible ? (
+                                <EyeNoneIcon />
+                              ) : (
+                                <EyeOpenIcon />
+                              )}
+                            </div>
+                            <div>{group.visible ? "Hide" : "Show"}</div>
+                          </Button>
+                          <Button
+                            variant="outline"
+                            className="bg-red-500"
+                            onClick={() => deleteGroup(group.id)}
+                          >
+                            Delete
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

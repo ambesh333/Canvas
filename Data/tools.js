@@ -1,3 +1,4 @@
+"use client";
 import { UpdateIcon, Share2Icon, LayersIcon } from "@radix-ui/react-icons";
 
 export const tools = [

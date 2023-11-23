@@ -1,4 +1,4 @@
-// StageCanvas.jsx
+"use client";
 import React from "react";
 import { Stage, Layer, Line } from "react-konva";
 import GroupComponent from "./GroupComponents/GroupComponent";
@@ -20,6 +20,8 @@ const StageCanvas = ({
   lines,
   color,
   passImageWithId,
+
+  lineWidth,
 }) => {
   return (
     <Stage
@@ -40,35 +42,11 @@ const StageCanvas = ({
             Circle={Circle}
             Rectangle={Rectangle}
             setSelectedId={setSelectedId}
-          />
-        ))}
-        {images.map((image, i) => (
-          <ImageComponent
-            key={i}
-            image={image}
-            shapeProps={passImageWithId(image, `image${i}`)}
-            id={`image${i}`}
-            isSelected={i === selectedId}
-            onSelect={() => {
-              setSelectedId(i);
-            }}
-            onChange={(newAttrs) => {
-              handleTransformChange(newAttrs, i);
-            }}
-          />
-        ))}
-        {lines.map((line, i) => (
-          <Line
-            key={i}
-            points={line.points}
-            stroke={line.points[0].color || color}
-            strokeWidth={5}
-            tension={0.5}
-            lineCap="round"
-            lineJoin="round"
-            globalCompositeOperation={
-              line.tool === "eraser" ? "destination-out" : "source-over"
-            }
+            passImageWithId={passImageWithId}
+            images={images}
+            lines={lines}
+            color={color}
+            lineWidth={lineWidth}
           />
         ))}
       </Layer>

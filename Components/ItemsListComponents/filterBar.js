@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 // simple filterBar for conditional rendering images by categories in sidebar
