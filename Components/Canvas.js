@@ -1,10 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Stage, Layer, Line } from "react-konva";
 import ItemsList from "./ItemsList";
-import ImageComponent from "./ImageComponent";
 import Navbar from "./Navbar";
-import RectangleComponent from "./shapes/Rectangle";
-import CircleComponent from "./shapes/Circle";
+import StageCanvas from "./StageCanvas";
 
 let history = [[]];
 let historyStep = 0;
@@ -144,6 +141,11 @@ function Canvas() {
   const [Rectangle, setRectangle] = useState(false);
   const [Circle, setCircle] = useState(false);
 
+  const [groups, setGroups] = useState([
+    { id: 0, elements: [], visible: true },
+  ]);
+  const [currentGroupId, setCurrentGroupId] = useState(0);
+
   const handleUndo = () => {
     if (historyStep === 0) {
       return;
@@ -199,7 +201,6 @@ function Canvas() {
         const lastLine = updatedLines[updatedLines.length - 1];
         lastLine.points = lastLine.points.concat([point.x, point.y]);
       }
-
       return updatedLines;
     });
   };
@@ -209,6 +210,8 @@ function Canvas() {
     historyStep += 1;
     isDrawing.current = false;
   };
+
+  console.log("group", groups);
 
   return (
     <div class="grid grid-cols-12">
@@ -248,115 +251,23 @@ function Canvas() {
             onDrop={handleOnDrop}
             onDragOver={(e) => e.preventDefault()}
           >
-            <Stage
-              width={stageDimensions.width}
-              height={stageDimensions.height}
-              // width={window.innerWidth}
-              // height={window.innerHeight}
-              // scaleX={stageDimensions.scale}
-              // scaleY={stageDimensions.scale}
-              ref={stageRef}
-              onMouseDown={handleMouseDown}
-              onMousemove={handleMouseMove}
-              onMouseup={handleMouseUp}
-            >
-              <Layer>
-                {/* {typeof backgroundImage === "string" && (
-                  // check if background image is not empty, default state is null
-                  <CanvasBackground
-                    backgroundUrl={backgroundImage}
-                    width={stageWidth}
-                    height={stageHeight}
-                  />
-                )} */}
-                {images.map((image, i) => {
-                  return (
-                    <ImageComponent
-                      image={image}
-                      shapeProps={passImageWithId(image, `image${i}`)}
-                      id={`image${i}`}
-                      key={i}
-                      isSelected={i === selectedId}
-                      onSelect={() => {
-                        setSelectedId(i);
-                      }}
-                      onChange={(newAttrs) => {
-                        handleTransformChange(newAttrs, i);
-                      }}
-                    />
-                  );
-                })}
-                {Rectangle && (
-                  <RectangleComponent
-                    shapeProps={{
-                      x: 20,
-                      y: 50,
-                      width: 100,
-                      height: 100,
-                      fill: "red",
-                    }}
-                    id="rectangle1"
-                    isSelected={selectedId === "rectangle1"}
-                    onSelect={() => setSelectedId("rectangle1")}
-                    onChange={(newAttrs) =>
-                      handleTransformChange(newAttrs, "rectangle1")
-                    }
-                  />
-                )}
-                {Circle && (
-                  <CircleComponent
-                    shapeProps={{
-                      x: 20,
-                      y: 50,
-                      radiusX: 50, // half of the width
-                      radiusY: 50, // half of the height
-                      fill: "red",
-                    }}
-                    id="Circle1"
-                    isSelected={selectedId === "Circle1"}
-                    onSelect={() => setSelectedId("Circle1")}
-                    onChange={(newAttrs) =>
-                      handleTransformChange(newAttrs, "Circle1")
-                    }
-                  />
-                )}
-                {/* {rectangles.map((rectangle, i) => (
-                  <RectangleComponent
-                    key={rectangle.id} // Add a unique key prop
-                    shapeProps={rectangle.shapeProps}
-                    id={rectangle.id}
-                    isSelected={rectangle.isSelected}
-                    onSelect={rectangle.onSelect}
-                    onChange={(newAttrs) => handleTransformChange(newAttrs, i)}
-                    ref={rectRef}
-                  />
-                ))} */}
-
-                {lines.map((line, i) => (
-                  <Line
-                    key={i}
-                    points={line.points}
-                    stroke={color}
-                    strokeWidth={5}
-                    tension={0.5}
-                    lineCap="round"
-                    lineJoin="round"
-                    globalCompositeOperation={
-                      line.tool === "eraser" ? "destination-out" : "source-over"
-                    }
-                  />
-                ))}
-              </Layer>
-            </Stage>
-            {/* <select
-            value={tool}
-            onChange={(e) => {
-              setTool(e.target.value);
-            }}
-          >
-            <option value="pen">Pen</option>
-            <option value="eraser">Eraser</option>
-          </select> */}
+            <StageCanvas
+              stageDimensions={stageDimensions}
+              stageRef={stageRef}
+              handleMouseDown={handleMouseDown}
+              handleMouseMove={handleMouseMove}
+              handleMouseUp={handleMouseUp}
+              groups={groups}
+              selectedId={selectedId}
+              setSelectedId={setSelectedId}
+              handleTransformChange={handleTransformChange}
+              Circle={Circle}
+              Rectangle={Rectangle}
+              images={images}
+              lines={lines}
+              color={color}
+              passImageWithId={passImageWithId}
+            />
           </div>
         </div>
       </div>
@@ -370,6 +281,9 @@ function Canvas() {
           removeBackground={removeBackground}
           resizeCanvasOnSidebarChange={resizeCanvasOnSidebarChange}
           stageRef={stageRef}
+          groups={groups}
+          setGroups={setGroups}
+          setCurrentGroupId={setCurrentGroupId}
         />
       </div>
     </div>

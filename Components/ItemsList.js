@@ -4,6 +4,7 @@ import { tools } from "../Data/tools";
 
 import UploadSection from "./ItemsListComponents/UploadSection";
 import ShareSection from "./ItemsListComponents/ShareSection";
+import LayerSection from "./ItemsListComponents/LayerSection";
 import ToolsBar from "./ToolsBar";
 
 function ItemsList(props) {
@@ -12,15 +13,12 @@ function ItemsList(props) {
   const componentsMap = {
     uploadSection: UploadSection,
     shareSection: ShareSection,
+    layerSection: LayerSection,
   };
   const [sidebarCollapse, setSidebarCollapse] = useState(true);
 
   const changeSelectedTool = (id) => {
     setSelectedTools(id);
-  };
-
-  const openMenuOnClick = () => {
-    sidebarCollapse ? setSidebarCollapse(false) : setSidebarCollapse(true);
   };
 
   const handleCanvasResizeOnSidebarChange = () => {
@@ -55,6 +53,9 @@ function ItemsList(props) {
                 addToBackground={props.addToBackground}
                 removeBackground={props.removeBackground}
                 stageRef={props.stageRef}
+                groups={props.groups}
+                setGroups={props.setGroups}
+                setCurrentGroupId={props.setCurrentGroupId}
               />
             );
           }
