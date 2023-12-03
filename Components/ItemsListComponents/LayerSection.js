@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import {
   ChevronDownIcon,
@@ -49,19 +47,6 @@ function LayerSection(props) {
       <div className="shareSectionWrap">
         <div className="hidden flex-col space-y-4 sm:flex md:order-2">
           <div className="grid gap-2">
-            <HoverCard openDelay={200}>
-              <HoverCardTrigger asChild>
-                <span className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  LAYERS
-                </span>
-              </HoverCardTrigger>
-              <HoverCardContent className="w-[320px] text-sm" side="left">
-                Organize your design with layers. Add, delete, and rearrange
-                layers to control the order of your elements. Toggle layer
-                visibility to easily hide or show specific elements.
-              </HoverCardContent>
-            </HoverCard>
-
             <div className="flex-col w-full">
               {groups.map((group) => (
                 <div className=" pt-5">
