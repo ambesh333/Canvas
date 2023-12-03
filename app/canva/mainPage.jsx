@@ -14,9 +14,7 @@ export default function Page(props) {
       enableSystem
       disableTransitionOnChange
     >
-      <div className="bodyWrap">
-        <Canvas />
-      </div>
+      <Canvas />
     </ThemeProvider>
   );
 }

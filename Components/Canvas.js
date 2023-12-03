@@ -147,6 +147,7 @@ function Canvas() {
   const [groups, setGroups] = useState([
     { id: 0, elements: [], visible: true },
   ]);
+
   const [currentGroupId, setCurrentGroupId] = useState(0);
 
   const handleUndo = () => {
@@ -183,6 +184,7 @@ function Canvas() {
     if (!isDrawing.current) {
       return;
     }
+
     const stage = stageRef.current.getStage();
     const point = stage.getPointerPosition();
 
@@ -214,8 +216,6 @@ function Canvas() {
     isDrawing.current = false;
   };
 
-  console.log("group", groups);
-
   return (
     <div class="grid grid-cols-12">
       <div class="col-span-10">
@@ -244,7 +244,7 @@ function Canvas() {
             />
           </div>
           <div
-            className="flex-none h-10/12 canvas bg-white"
+            className="flex-none h-full canvas bg-white"
             style={{
               position: "relative",
               width: "100%",
